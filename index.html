@@ -1,67 +1,52 @@
+<div class="container">
+  <h1>Hiperfoco</h1>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hiperfoco – Links Úteis</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #000000, #1a1a1a);
-      color: #00ffff;
-      text-align: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      color: #00ffff;
-    }
-    .link {
-      display: block;
-      background: rgba(0, 255, 255, 0.1);
-      color: #00ffff;
-      padding: 14px 20px;
-      margin: 20px 0;
-      text-decoration: none;
-      border: 2px solid #00ffff;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      font-size: 18px;
-      backdrop-filter: blur(5px);
-    }
-    .link:hover {
-      background: #00ffff;
-      color: #000;
-      transform: scale(1.05);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Hiperfoco</h1>
+  <button class="audio-button" onclick="playAudio()">Ativar Áudio Ambiente</button>
+  <audio id="audio" loop>
+    <source src="audio.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio HTML5.
+  </audio>
 
-    <a class="link" href="https://ghostman2709.github.io/Index/?fbclid=PAQ0xDSwLO2PNleHRuA2FlbQIxMQABp9-OYNMfGP5dsFm54Qa6deUqoNcgOagTfGUD3bIdAjupAVlRZRTpuogLB8qV_aem_gn6AMbdGk-AqnXV5qvguLg" target="_blank">📘 Livro Hiperfoco</a>
+  <!-- Links dos 20 capítulos -->
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank">Capítulo 1</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank">Capítulo 2</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank">Capítulo 3</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-4/" target="_blank">Capítulo 4</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-5/" target="_blank">Capítulo 5</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-6/" target="_blank">Capítulo 6</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-7/" target="_blank">Capítulo 7</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-8/" target="_blank">Capítulo 8</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-9/" target="_blank">Capítulo 9</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-10/" target="_blank">Capítulo 10</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-11/" target="_blank">Capítulo 11</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-12/" target="_blank">Capítulo 12</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-13/" target="_blank">Capítulo 13</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-14/" target="_blank">Capítulo 14</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-15/" target="_blank">Capítulo 15</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-16/" target="_blank">Capítulo 16</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-17/" target="_blank">Capítulo 17</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-18/" target="_blank">Capítulo 18</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-19/" target="_blank">Capítulo 19</a>
+  <a class="link" href="https://ghostman2709.github.io/Capitulo-20/" target="_blank">Capítulo 20</a>
 
-    <a class="link" href="https://ghostman2709.github.io/IA/?fbclid=PAQ0xDSwLO2TJleHRuA2FlbQIxMAABp6VGyqOgG0HUxTe8Aw9DLm1SywqKWxsa4dTx7h1R5WVqYrMgxQXsSPWrVR9p_aem_IxqqNsG7FL1rEXLGjoP2cg" target="_blank">🤖 Mestre de IA</a>
+  <!-- Link para envio de comprovante -->
+  <a class="link" href="https://wa.me/5555996043937?text=Olá,%20segue%20meu%20comprovante%20do%20Pix%20para%20acesso%20ao%20restante%20do%20conteúdo." target="_blank">
+    📩 Enviar Comprovante
+  </a>
+</div>
 
-    <a class="link" href="https://wa.me/5599999999999" target="_blank">💳 Pagamento & Suporte via WhatsApp</a>
-  </div>
-</body>
-</html>
+<div class="container pix-section">
+  <h2>🔓 Doação / Contribuir</h2>
+  <p>Se gostou do conteúdo e quer apoiar, faça uma doação via Pix ou sua forma preferida.</p>
+
+  <a class="link" href="https://link-da-sua-doacao-aqui" target="_blank" style="font-weight:700; font-size:20px;">
+    💖 Doação / Contribuir
+  </a>
+
+  <!-- Você pode deixar o QR code Pix aqui, se quiser -->
+  <!--
+  <img class="pix-qr"
+    src="https://api.qrserver.com/v1/create-qr-code/?data=PIXKEYAQUI"
+    alt="QR Code Pix" />
+  -->
+</div>
