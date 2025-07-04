@@ -6,6 +6,10 @@
   <title>Hiperfoco</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -14,7 +18,9 @@
       text-align: center;
       min-height: 100vh;
       padding: 40px 20px;
-      animation: fadeIn 3s ease-in-out forwards;
+      animation: fadeIn 2s ease-in-out forwards;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     @keyframes fadeIn {
@@ -23,29 +29,36 @@
     }
 
     .container {
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
+      background: rgba(0, 18, 34, 0.6);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 0 25px #66ccff88, 0 0 40px #3399ff66;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 38px;
       margin-bottom: 10px;
       color: #66ccff;
-      text-shadow: 0 0 10px #3399ff;
+      text-shadow: 0 0 15px #66ccff, 0 0 25px #3399ff;
     }
 
     .sub-msg {
       font-size: 18px;
       color: #99ccff;
       margin-bottom: 30px;
+      text-shadow: 0 0 6px #3399ff;
     }
 
     .link {
       display: block;
-      background: rgba(102, 204, 255, 0.1);
+      background: rgba(102, 204, 255, 0.07);
       color: #66ccff;
       padding: 14px 20px;
-      margin: 20px 0;
+      margin: 15px 0;
       text-decoration: none;
       border: 2px solid #66ccff;
       border-radius: 12px;
@@ -53,82 +66,68 @@
       font-weight: 600;
       font-size: 18px;
       backdrop-filter: blur(5px);
+      box-shadow: 0 0 10px #66ccff33;
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards;
     }
 
     .link:hover {
       background: #66ccff;
       color: #001122;
       transform: scale(1.05);
+      box-shadow: 0 0 25px #66ccffcc;
+    }
+
+    .link:nth-child(n) {
+      animation-delay: calc(0.1s * var(--i));
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .audio-button {
       margin-bottom: 30px;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 28px;
+      font-size: 17px;
       font-weight: bold;
       color: #001122;
       background-color: #66ccff;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 0 15px #66ccff, 0 0 30px #3399ff88;
+      transition: all 0.3s ease;
     }
 
     .audio-button:hover {
       background-color: #3399ff;
+      color: #ffffff;
+      box-shadow: 0 0 30px #66ccffcc;
     }
 
-    .pix-section {
-      margin-top: 60px;
-      padding: 20px;
-      background: rgba(102, 204, 255, 0.15);
-      border-radius: 12px;
-      box-shadow: 0 0 10px #3399ff;
-    }
-
-    .pix-key {
-      font-weight: bold;
-      color: #99ccff;
-      margin-top: 15px;
-      word-break: break-word;
-    }
-
-    .pix-qr {
-      margin: 20px 0;
-      width: 150px;
-      height: 150px;
-      border-radius: 12px;
-      box-shadow: 0 0 8px #66ccff;
-    }
-
-    #msgCopiado {
-      margin-top: 15px;
-      color: #00ff88;
-      font-weight: 700;
-      display: none;
-    }
-
-    #btnEnviarComprovante {
-      margin-top: 25px;
-      display: none;
-      background-color: #25d366;
-      color: #fff;
-      padding: 14px 30px;
-      font-weight: 700;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 18px;
-      box-shadow: 0 0 10px #25d366;
-      transition: background-color 0.3s ease;
-    }
-
-    #btnEnviarComprovante:hover {
-      background-color: #1ebe57;
+    /* Fundo partículas */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: transparent;
     }
   </style>
 </head>
 <body>
+  <canvas id="particles"></canvas>
+
   <div class="container">
     <h1>Hiperfoco</h1>
     <p class="sub-msg">🎧 <strong>Ative o áudio antes de ler</strong> para uma experiência completa.</p>
@@ -140,40 +139,26 @@
     </audio>
 
     <!-- Capítulos -->
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank">Capítulo 1</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank">Capítulo 2</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank">Capítulo 3</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-4/" target="_blank">Capítulo 4</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-5/" target="_blank">Capítulo 5</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-6/" target="_blank">Capítulo 6</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-7/" target="_blank">Capítulo 7</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-8/" target="_blank">Capítulo 8</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-9/" target="_blank">Capítulo 9</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-10/" target="_blank">Capítulo 10</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-11/" target="_blank">Capítulo 11</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-12/" target="_blank">Capítulo 12</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-13/" target="_blank">Capítulo 13</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-14/" target="_blank">Capítulo 14</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-15/" target="_blank">Capítulo 15</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-16/" target="_blank">Capítulo 16</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-17/" target="_blank">Capítulo 17</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-18/" target="_blank">Capítulo 18</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-19/" target="_blank">Capítulo 19</a>
-    <a class="link" href="https://ghostman2709.github.io/Capitulo-20/" target="_blank">Capítulo 20</a>
-  </div>
-
-  <div class="container pix-section">
-    <h2>🔓 Doação / Contribuir</h2>
-    <p>Se gostou do conteúdo e deseja apoiar, faça uma doação via Pix utilizando o QR Code abaixo:</p>
-    <img class="pix-qr"
-      src="https://api.qrserver.com/v1/create-qr-code/?data=03614888070&size=150x150"
-      alt="QR Code Pix" />
-
-    <button onclick="copiarPix()" class="audio-button">📋 Copiar chave Pix</button>
-    <p class="pix-key" id="pixPayload">03614888070</p>
-
-    <p id="msgCopiado">✅ Copiado com sucesso! Agora envie o comprovante abaixo:</p>
-    <button id="btnEnviarComprovante">📤 Enviar comprovante via WhatsApp</button>
+    <a class="link" style="--i:1" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank">Capítulo 1</a>
+    <a class="link" style="--i:2" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank">Capítulo 2</a>
+    <a class="link" style="--i:3" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank">Capítulo 3</a>
+    <a class="link" style="--i:4" href="https://ghostman2709.github.io/Capitulo-4/" target="_blank">Capítulo 4</a>
+    <a class="link" style="--i:5" href="https://ghostman2709.github.io/Capitulo-5/" target="_blank">Capítulo 5</a>
+    <a class="link" style="--i:6" href="https://ghostman2709.github.io/Capitulo-6/" target="_blank">Capítulo 6</a>
+    <a class="link" style="--i:7" href="https://ghostman2709.github.io/Capitulo-7/" target="_blank">Capítulo 7</a>
+    <a class="link" style="--i:8" href="https://ghostman2709.github.io/Capitulo-8/" target="_blank">Capítulo 8</a>
+    <a class="link" style="--i:9" href="https://ghostman2709.github.io/Capitulo-9/" target="_blank">Capítulo 9</a>
+    <a class="link" style="--i:10" href="https://ghostman2709.github.io/Capitulo-10/" target="_blank">Capítulo 10</a>
+    <a class="link" style="--i:11" href="https://ghostman2709.github.io/Capitulo-11/" target="_blank">Capítulo 11</a>
+    <a class="link" style="--i:12" href="https://ghostman2709.github.io/Capitulo-12/" target="_blank">Capítulo 12</a>
+    <a class="link" style="--i:13" href="https://ghostman2709.github.io/Capitulo-13/" target="_blank">Capítulo 13</a>
+    <a class="link" style="--i:14" href="https://ghostman2709.github.io/Capitulo-14/" target="_blank">Capítulo 14</a>
+    <a class="link" style="--i:15" href="https://ghostman2709.github.io/Capitulo-15/" target="_blank">Capítulo 15</a>
+    <a class="link" style="--i:16" href="https://ghostman2709.github.io/Capitulo-16/" target="_blank">Capítulo 16</a>
+    <a class="link" style="--i:17" href="https://ghostman2709.github.io/Capitulo-17/" target="_blank">Capítulo 17</a>
+    <a class="link" style="--i:18" href="https://ghostman2709.github.io/Capitulo-18/" target="_blank">Capítulo 18</a>
+    <a class="link" style="--i:19" href="https://ghostman2709.github.io/Capitulo-19/" target="_blank">Capítulo 19</a>
+    <a class="link" style="--i:20" href="https://ghostman2709.github.io/Capitulo-20/" target="_blank">Capítulo 20</a>
   </div>
 
   <script>
@@ -182,20 +167,47 @@
       audio.play();
     }
 
-    function copiarPix() {
-      const payload = "03614888070";
-      navigator.clipboard.writeText(payload).then(() => {
-        document.getElementById("msgCopiado").style.display = "block";
-        const btn = document.getElementById("btnEnviarComprovante");
-        btn.style.display = "inline-block";
+    // Partículas animadas
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-        const telefone = "5555996043937";
-        const texto = encodeURIComponent("Olá! Já realizei o pagamento via Pix. Segue o comprovante em anexo.");
-        btn.onclick = () => window.open(`https://wa.me/${telefone}?text=${texto}`, "_blank");
-      }).catch(() => {
-        alert("Erro ao copiar a chave.");
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 90; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.2,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
       });
     }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#66ccff";
+
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    drawParticles();
   </script>
 </body>
 </html>
