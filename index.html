@@ -166,7 +166,7 @@
       audio.play();
     }
 
-    // Partículas pequenas com brilho intenso
+    // Partículas pequenas e suaves
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -181,13 +181,13 @@
 
     const colors = ["#66ccff", "#3399ff", "#00ccff", "#88eeff"];
 
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 400; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 1.4 + 0.8,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 0.9 + 0.3,  // partículas menores
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: (Math.random() - 0.5) * 0.4,
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
@@ -199,7 +199,7 @@
         ctx.beginPath();
         ctx.fillStyle = p.color;
         ctx.shadowColor = p.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 8;
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
 
