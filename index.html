@@ -113,7 +113,6 @@
       box-shadow: 0 0 30px #66ccffcc;
     }
 
-    /* Fundo partículas */
     #particles {
       position: fixed;
       top: 0;
@@ -167,7 +166,7 @@
       audio.play();
     }
 
-    // Partículas animadas
+    // Efeito de partículas atualizado
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -180,26 +179,33 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    for (let i = 0; i < 90; i++) {
+    const colors = ["#66ccff", "#3399ff", "#00ccff", "#88eeff"];
+
+    for (let i = 0; i < 300; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 1.2,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 3 + 1,
+        dx: (Math.random() - 0.5) * 0.8,
+        dy: (Math.random() - 0.5) * 0.8,
+        color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
 
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#66ccff";
 
       particles.forEach(p => {
         ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 15;
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
+
         p.x += p.dx;
         p.y += p.dy;
+
         if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
       });
