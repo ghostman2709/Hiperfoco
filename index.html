@@ -29,7 +29,7 @@
     }
     .container {
       max-width: 500px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
       background: rgba(0, 17, 34, 0.6);
       border: 2px solid #66ccff;
       border-radius: 16px;
@@ -148,7 +148,6 @@
       color: #fff;
       box-shadow: 0 0 20px #2ecc00;
     }
-
     @media (max-width: 480px) {
       h1 {
         font-size: 2rem;
@@ -203,4 +202,56 @@
 
   <div class="container pix-section fade-in">
     <h2>🔓 Doação / Contribuir</h2>
-    <p>Se gostou do
+    <p>Se gostou do conteúdo e deseja apoiar, faça uma doação via Pix utilizando o QR Code abaixo:</p>
+    <img
+      class="pix-qr"
+      src="https://api.qrserver.com/v1/create-qr-code/?data=03614888070&size=150x150"
+      alt="QR Code Pix"
+    />
+    <button onclick="copiarPix()" class="audio-button">📋 Copiar chave Pix</button>
+    <p class="pix-key" id="pixPayload">03614888070</p>
+
+    <p id="msgCopiado">✅ Copiado com sucesso! Agora envie o comprovante abaixo:</p>
+    <a id="btnEnviarComprovante" target="_blank" rel="noopener noreferrer" href="">📤 Enviar comprovante via WhatsApp</a>
+  </div>
+
+  <script>
+    // Fade-in simples para todos elementos .fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+      setTimeout(() => {
+        el.classList.add('appear');
+      }, 150);
+    });
+
+    // Áudio ambiente
+    const btnAudio = document.getElementById('btnAudio');
+    const audio = document.getElementById('audio');
+    btnAudio.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btnAudio.textContent = '⏸️ Parar Áudio Ambiente';
+      } else {
+        audio.pause();
+        btnAudio.textContent = '🎧 Ativar Áudio Ambiente';
+      }
+    });
+
+    // Copiar Pix e mostrar botão enviar comprovante
+    function copiarPix() {
+      const pix = document.getElementById('pixPayload').textContent.trim();
+      navigator.clipboard.writeText(pix).then(() => {
+        document.getElementById('msgCopiado').style.display = 'block';
+        const btnEnviar = document.getElementById('btnEnviarComprovante');
+        btnEnviar.style.display = 'inline-block';
+        btnEnviar.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Monta link WhatsApp
+        const telefone = '5555996043937';
+        const texto = encodeURIComponent('Olá! Já realizei o pagamento via Pix. Segue o comprovante.');
+        btnEnviar.href = `https://wa.me/${telefone}?text=${texto}`;
+      }).catch(() => {
+        alert('Erro ao copiar a chave Pix.');
+      });
+    }
+  </script>
+</body>
+</html>
