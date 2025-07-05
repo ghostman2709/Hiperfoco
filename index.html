@@ -17,8 +17,46 @@
       scroll-behavior: smooth;
     }
 
+    .audio-container {
+      padding: 1rem;
+      text-align: center;
+      background: rgba(0, 17, 34, 0.6);
+      border-bottom: 2px solid #66ccff;
+    }
+
+    .audio-msg {
+      font-size: 1rem;
+      color: #99ccff;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px #3399ff88;
+      font-weight: 600;
+    }
+
+    #audioControl {
+      background: rgba(102, 204, 255, 0.1);
+      border: 2px solid #66ccff;
+      color: #66ccff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      max-width: 300px;
+      text-align: center;
+      user-select: none;
+      display: inline-block;
+    }
+
+    #audioControl:hover {
+      background: #66ccff;
+      color: #001122;
+      transform: scale(1.05);
+    }
+
     header {
-      padding: 2rem 1rem 1rem;
+      padding: 1rem 1rem 0.5rem;
       text-align: center;
     }
 
@@ -83,30 +121,6 @@
       box-shadow: 0 0 20px #66ccffcc;
     }
 
-    #audioControl {
-      margin: 1.5rem auto 2rem;
-      background: rgba(102, 204, 255, 0.1);
-      border: 2px solid #66ccff;
-      color: #66ccff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      max-width: 300px;
-      text-align: center;
-      user-select: none;
-      display: inline-block;
-    }
-
-    #audioControl:hover {
-      background: #66ccff;
-      color: #001122;
-      transform: scale(1.05);
-    }
-
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -143,6 +157,13 @@
 </head>
 <body>
 
+<!-- Botão de Áudio no Topo -->
+<div class="audio-container fade-in">
+  <p class="audio-msg">🎧 Ative a trilha sonora para uma leitura mais focada e profunda:</p>
+  <button id="audioControl" class="fade-in">Ativar Trilha Sonora 🎧</button>
+  <audio id="bgAudio" src="audio.mp3" loop></audio>
+</div>
+
 <header class="fade-in">
   <h1>Hiperfoco</h1>
   <p>O Poder de 10 Minutos por Dia</p>
@@ -151,30 +172,27 @@
 <div class="section fade-in">
   <h2>📘 Capítulos Completos (1 a 20)</h2>
 
-  <!-- Lista de 20 capítulos -->
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank">Capítulo 1</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank">Capítulo 2</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank">Capítulo 3</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-4/" target="_blank">Capítulo 4</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-5/" target="_blank">Capítulo 5</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-6/" target="_blank">Capítulo 6</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-7/" target="_blank">Capítulo 7</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-8/" target="_blank">Capítulo 8</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-9/" target="_blank">Capítulo 9</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-10/" target="_blank">Capítulo 10</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-11/" target="_blank">Capítulo 11</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-12/" target="_blank">Capítulo 12</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-13/" target="_blank">Capítulo 13</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-14/" target="_blank">Capítulo 14</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-15/" target="_blank">Capítulo 15</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-16/" target="_blank">Capítulo 16</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-17/" target="_blank">Capítulo 17</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-18/" target="_blank">Capítulo 18</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-19/" target="_blank">Capítulo 19</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-20/" target="_blank">Capítulo 20</a>
-
-  <button id="audioControl" class="fade-in">Ativar Trilha Sonora 🎧</button>
-  <audio id="bgAudio" src="audio.mp3" loop></audio>
+  <!-- Lista dos 20 capítulos -->
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-1/">Capítulo 1</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-2/">Capítulo 2</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-3/">Capítulo 3</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-4/">Capítulo 4</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-5/">Capítulo 5</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-6/">Capítulo 6</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-7/">Capítulo 7</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-8/">Capítulo 8</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-9/">Capítulo 9</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-10/">Capítulo 10</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-11/">Capítulo 11</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-12/">Capítulo 12</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-13/">Capítulo 13</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-14/">Capítulo 14</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-15/">Capítulo 15</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-16/">Capítulo 16</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-17/">Capítulo 17</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-18/">Capítulo 18</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-19/">Capítulo 19</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-20/">Capítulo 20</a>
 </div>
 
 <footer class="fade-in">
@@ -182,7 +200,6 @@
 </footer>
 
 <script>
-  // Controle da trilha sonora
   const btnAudio = document.getElementById('audioControl');
   const audio = document.getElementById('bgAudio');
   let isPlaying = false;
@@ -199,7 +216,6 @@
     }
   });
 
-  // Fade-in com IntersectionObserver
   const fadeIns = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -209,8 +225,9 @@
       }
     });
   }, { threshold: 0.1 });
+
   fadeIns.forEach(el => observer.observe(el));
 </script>
 
 </body>
-  </html>
+</html>
