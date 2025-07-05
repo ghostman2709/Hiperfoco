@@ -4,53 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Hiperfoco – O Poder de 10 Minutos</title>
+  <title>Hiperfoco – Capítulos Completos</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(135deg, #001122, #002244);
       color: #66ccff;
-      padding: 40px 20px;
+      line-height: 1.6;
       scroll-behavior: smooth;
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-    }
-    .fade-in.appear {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto 40px;
-      background: rgba(0, 17, 34, 0.6);
-      border: 2px solid #66ccff;
-      border-radius: 16px;
-      padding: 30px 25px;
-      box-shadow: 0 0 30px #66ccff, 0 0 60px #3399ffaa;
+
+    header {
+      padding: 2rem 1rem 1rem;
       text-align: center;
     }
-    h1 {
+
+    header h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      color: #66ccff;
+      margin: 0;
       text-shadow: 0 0 12px #3399ffcc;
       font-weight: 700;
-      color: #66ccff;
     }
-    .sub-msg {
+
+    header p {
       font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
       color: #99ccff;
+      margin-top: 0.5rem;
       text-shadow: 0 0 8px #3399ff99;
+      font-weight: 600;
     }
+
+    .section {
+      padding: 2rem 1.5rem 3rem;
+      max-width: 800px;
+      margin: 1rem auto;
+      border: 2px solid #66ccff;
+      border-radius: 16px;
+      background: rgba(0, 17, 34, 0.6);
+      box-shadow: 0 0 30px #66ccff, 0 0 60px #3399ffaa;
+    }
+
+    .section h2 {
+      color: #66ccff;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 5px #3399ff;
+      font-weight: 700;
+      text-align: center;
+    }
+
     .link {
       display: block;
       background: rgba(102, 204, 255, 0.1);
@@ -63,198 +69,104 @@
       transition: all 0.3s ease;
       font-weight: 700;
       font-size: 18px;
-      max-width: 100%;
+      max-width: 300px;
       backdrop-filter: blur(5px);
-      box-shadow: 0 0 10px #66ccff;
       cursor: pointer;
-      user-select: none;
+      box-shadow: 0 0 10px #66ccff;
+      text-align: center;
     }
+
     .link:hover {
       background: #66ccff;
       color: #001122;
       transform: scale(1.05);
       box-shadow: 0 0 20px #66ccffcc;
     }
-    .audio-button {
-      display: inline-block;
-      margin-bottom: 2rem;
-      padding: 14px 30px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #001122;
-      background-color: #66ccff;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      box-shadow: 0 0 12px #66ccff, 0 0 25px #3399ffaa;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    .audio-button:hover {
-      background-color: #3399ff;
-      color: #fff;
-    }
-    .pix-section {
-      margin-top: 3rem;
-      padding: 25px;
-      background: rgba(102, 204, 255, 0.12);
-      border-radius: 16px;
-      box-shadow: 0 0 30px #66ccff88, 0 0 50px #3399ff55;
+
+    footer {
       text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #88aabb;
+      text-shadow: 0 0 5px #3399ff88;
     }
-    .pix-qr {
-      width: 150px;
-      height: 150px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #66ccff;
-      margin: 20px auto;
-      display: block;
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     }
-    .pix-key {
-      font-weight: 700;
-      color: #aaccee;
-      font-size: 16px;
-      margin-top: 15px;
-      word-break: break-word;
-      user-select: all;
-      cursor: text;
+
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
     }
-    #msgCopiado {
-      margin-top: 15px;
-      color: #00ff88;
-      font-weight: 700;
-      display: none;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    #btnEnviarComprovante {
-      margin-top: 25px;
-      display: none;
-      background-color: #39ff14;
-      color: #001100;
-      padding: 14px 40px;
-      font-weight: 700;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 18px;
-      box-shadow: 0 0 12px #39ff14, 0 0 25px #39ff14aa;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      user-select: none;
-      display: inline-block;
-    }
-    #btnEnviarComprovante:hover {
-      background-color: #2ecc00;
-      color: #fff;
-      box-shadow: 0 0 20px #2ecc00;
-    }
+
     @media (max-width: 480px) {
-      h1 {
+      header h1 {
         font-size: 2rem;
       }
-      .sub-msg {
+      .section h2 {
+        font-size: 1.4rem;
+      }
+      .link {
         font-size: 1rem;
-      }
-      .link, .audio-button, #btnEnviarComprovante {
-        font-size: 16px;
-        padding: 12px 20px;
-      }
-      .container {
-        padding: 20px 15px;
+        padding: 0.8rem 1.2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container fade-in">
-    <h1>Hiperfoco</h1>
-    <p class="sub-msg">🎧 Ative o áudio antes de ler para uma experiência completa.</p>
+<header class="fade-in">
+  <h1>Hiperfoco</h1>
+  <p>O Poder de 10 Minutos por Dia</p>
+</header>
 
-    <button class="audio-button" id="btnAudio">Ativar Áudio Ambiente 🎧</button>
-    <audio id="audio" loop>
-      <source src="audio.mp3" type="audio/mpeg" />
-      Seu navegador não suporta áudio HTML5.
-    </audio>
+<div class="section fade-in">
+  <h2>📘 Capítulos Completos (1 a 20)</h2>
 
-    <!-- Capítulos -->
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank" rel="noopener noreferrer">Capítulo 1</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank" rel="noopener noreferrer">Capítulo 2</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank" rel="noopener noreferrer">Capítulo 3</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-4/" target="_blank" rel="noopener noreferrer">Capítulo 4</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-5/" target="_blank" rel="noopener noreferrer">Capítulo 5</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-6/" target="_blank" rel="noopener noreferrer">Capítulo 6</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-7/" target="_blank" rel="noopener noreferrer">Capítulo 7</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-8/" target="_blank" rel="noopener noreferrer">Capítulo 8</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-9/" target="_blank" rel="noopener noreferrer">Capítulo 9</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-10/" target="_blank" rel="noopener noreferrer">Capítulo 10</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-11/" target="_blank" rel="noopener noreferrer">Capítulo 11</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-12/" target="_blank" rel="noopener noreferrer">Capítulo 12</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-13/" target="_blank" rel="noopener noreferrer">Capítulo 13</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-14/" target="_blank" rel="noopener noreferrer">Capítulo 14</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-15/" target="_blank" rel="noopener noreferrer">Capítulo 15</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-16/" target="_blank" rel="noopener noreferrer">Capítulo 16</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-17/" target="_blank" rel="noopener noreferrer">Capítulo 17</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-18/" target="_blank" rel="noopener noreferrer">Capítulo 18</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-19/" target="_blank" rel="noopener noreferrer">Capítulo 19</a>
-    <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-20/" target="_blank" rel="noopener noreferrer">Capítulo 20</a>
-  </div>
+  <!-- Lista de 20 capítulos -->
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank">Capítulo 1</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank">Capítulo 2</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank">Capítulo 3</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-4/" target="_blank">Capítulo 4</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-5/" target="_blank">Capítulo 5</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-6/" target="_blank">Capítulo 6</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-7/" target="_blank">Capítulo 7</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-8/" target="_blank">Capítulo 8</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-9/" target="_blank">Capítulo 9</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-10/" target="_blank">Capítulo 10</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-11/" target="_blank">Capítulo 11</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-12/" target="_blank">Capítulo 12</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-13/" target="_blank">Capítulo 13</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-14/" target="_blank">Capítulo 14</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-15/" target="_blank">Capítulo 15</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-16/" target="_blank">Capítulo 16</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-17/" target="_blank">Capítulo 17</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-18/" target="_blank">Capítulo 18</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-19/" target="_blank">Capítulo 19</a>
+  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-20/" target="_blank">Capítulo 20</a>
 
-  <div class="container pix-section fade-in">
-    <h2>🔓 Doação / Contribuir</h2>
-    <p>Se gostou do conteúdo e deseja apoiar, faça uma doação via Pix utilizando o QR Code abaixo:</p>
-    <img
-      class="pix-qr"
-      src="qrcode-pix.png"  <!-- substitua pelo seu arquivo local de QR -->
-      alt="QR Code Pix"
-    />
-    <button onclick="copiarPix()" class="audio-button">📋 Copiar chave Pix</button>
-    <p class="pix-key" id="pixPayload">03614888070</p>
+</div>
 
-    <p id="msgCopiado">✅ Copiado com sucesso! Agora envie o comprovante abaixo:</p>
-    <a id="btnEnviarComprovante" target="_blank" rel="noopener noreferrer" href="">📤 Enviar comprovante via WhatsApp</a>
-  </div>
+<footer class="fade-in">
+  © 2025 Projeto Hiperfoco. Todos os direitos reservados.
+</footer>
 
-  <script>
-    // Fade-in simples para elementos .fade-in
-    document.querySelectorAll('.fade-in').forEach(el => {
-      setTimeout(() => {
-        el.classList.add('appear');
-      }, 150);
-    });
-
-    // Áudio ambiente ativar/desativar
-    const btnAudio = document.getElementById('btnAudio');
-    const audio = document.getElementById('audio');
-    btnAudio.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        btnAudio.textContent = '⏸️ Parar Áudio Ambiente';
-      } else {
-        audio.pause();
-        btnAudio.textContent = '🎧 Ativar Áudio Ambiente';
+<script>
+  // Fade-in com IntersectionObserver
+  const fadeIns = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('appear');
+        obs.unobserve(entry.target);
       }
     });
-
-    // Copiar chave Pix e mostrar botão enviar comprovante
-    function copiarPix() {
-      const pix = document.getElementById('pixPayload').textContent.trim();
-      navigator.clipboard.writeText(pix).then(() => {
-        document.getElementById('msgCopiado').style.display = 'block';
-        const btnEnviar = document.getElementById('btnEnviarComprovante');
-        btnEnviar.style.display = 'inline-block';
-        btnEnviar.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        // Link WhatsApp com mensagem padrão
-        const telefone = '5555996043937'; // seu número com código país (55) e DDD (55)
-        const texto = encodeURIComponent('Olá! Já realizei o pagamento via Pix. Segue o comprovante.');
-        btnEnviar.href = `https://wa.me/${telefone}?text=${texto}`;
-      }).catch(() => {
-        alert('Erro ao copiar a chave Pix.');
-      });
-    }
-  </script>
+  }, { threshold: 0.1 });
+  fadeIns.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
