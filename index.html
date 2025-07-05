@@ -203,4 +203,58 @@
 
   <div class="container pix-section fade-in">
     <h2>🔓 Doação / Contribuir</h2>
-    <p>Se gostou do conteúdo e deseja apoiar, faça uma doação via Pix utilizando o QR
+    <p>Se gostou do conteúdo e deseja apoiar, faça uma doação via Pix utilizando o QR Code abaixo:</p>
+    <img
+      class="pix-qr"
+      src="qrcode-pix.png"  <!-- substitua pelo seu arquivo local de QR -->
+      alt="QR Code Pix"
+    />
+    <button onclick="copiarPix()" class="audio-button">📋 Copiar chave Pix</button>
+    <p class="pix-key" id="pixPayload">03614888070</p>
+
+    <p id="msgCopiado">✅ Copiado com sucesso! Agora envie o comprovante abaixo:</p>
+    <a id="btnEnviarComprovante" target="_blank" rel="noopener noreferrer" href="">📤 Enviar comprovante via WhatsApp</a>
+  </div>
+
+  <script>
+    // Fade-in simples para elementos .fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+      setTimeout(() => {
+        el.classList.add('appear');
+      }, 150);
+    });
+
+    // Áudio ambiente ativar/desativar
+    const btnAudio = document.getElementById('btnAudio');
+    const audio = document.getElementById('audio');
+    btnAudio.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btnAudio.textContent = '⏸️ Parar Áudio Ambiente';
+      } else {
+        audio.pause();
+        btnAudio.textContent = '🎧 Ativar Áudio Ambiente';
+      }
+    });
+
+    // Copiar chave Pix e mostrar botão enviar comprovante
+    function copiarPix() {
+      const pix = document.getElementById('pixPayload').textContent.trim();
+      navigator.clipboard.writeText(pix).then(() => {
+        document.getElementById('msgCopiado').style.display = 'block';
+        const btnEnviar = document.getElementById('btnEnviarComprovante');
+        btnEnviar.style.display = 'inline-block';
+        btnEnviar.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Link WhatsApp com mensagem padrão
+        const telefone = '5555996043937'; // seu número com código país (55) e DDD (55)
+        const texto = encodeURIComponent('Olá! Já realizei o pagamento via Pix. Segue o comprovante.');
+        btnEnviar.href = `https://wa.me/${telefone}?text=${texto}`;
+      }).catch(() => {
+        alert('Erro ao copiar a chave Pix.');
+      });
+    }
+  </script>
+
+</body>
+</html>
