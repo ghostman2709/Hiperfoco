@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Hiperfoco – Capítulos Completos</title>
+  <title>Hiperfoco Acesso - Capítulos Gratuitos</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -17,46 +17,8 @@
       scroll-behavior: smooth;
     }
 
-    .audio-container {
-      padding: 1rem;
-      text-align: center;
-      background: rgba(0, 17, 34, 0.6);
-      border-bottom: 2px solid #66ccff;
-    }
-
-    .audio-msg {
-      font-size: 1rem;
-      color: #99ccff;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 8px #3399ff88;
-      font-weight: 600;
-    }
-
-    #audioControl {
-      background: rgba(102, 204, 255, 0.1);
-      border: 2px solid #66ccff;
-      color: #66ccff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      max-width: 300px;
-      text-align: center;
-      user-select: none;
-      display: inline-block;
-    }
-
-    #audioControl:hover {
-      background: #66ccff;
-      color: #001122;
-      transform: scale(1.05);
-    }
-
     header {
-      padding: 1rem 1rem 0.5rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
     }
 
@@ -100,7 +62,7 @@
       background: rgba(102, 204, 255, 0.1);
       color: #66ccff;
       padding: 14px 20px;
-      margin: 12px auto;
+      margin: 15px auto;
       text-decoration: none;
       border: 2px solid #66ccff;
       border-radius: 12px;
@@ -112,6 +74,7 @@
       cursor: pointer;
       box-shadow: 0 0 10px #66ccff;
       text-align: center;
+      user-select: none;
     }
 
     .link:hover {
@@ -119,6 +82,30 @@
       color: #001122;
       transform: scale(1.05);
       box-shadow: 0 0 20px #66ccffcc;
+    }
+
+    #audioControl {
+      margin: 2rem auto;
+      background: rgba(102, 204, 255, 0.1);
+      border: 2px solid #66ccff;
+      color: #66ccff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      display: block;
+      max-width: 300px;
+      text-align: center;
+      user-select: none;
+    }
+
+    #audioControl:hover {
+      background: #66ccff;
+      color: #001122;
+      transform: scale(1.05);
     }
 
     footer {
@@ -157,22 +144,16 @@
 </head>
 <body>
 
-<!-- Botão de Áudio no Topo -->
-<div class="audio-container fade-in">
-  <p class="audio-msg">🎧 Ative a trilha sonora para uma leitura mais focada e profunda:</p>
-  <button id="audioControl" class="fade-in">Ativar Trilha Sonora 🎧</button>
-  <audio id="bgAudio" src="audio.mp3" loop></audio>
-</div>
-
 <header class="fade-in">
   <h1>Hiperfoco</h1>
   <p>O Poder de 10 Minutos por Dia</p>
 </header>
 
 <div class="section fade-in">
-  <h2>📘 Capítulos Completos (1 a 20)</h2>
+  <button id="audioControl" class="fade-in">Ativar Trilha Sonora 🎧</button>
+  <audio id="bgAudio" src="audio.mp3" loop></audio>
 
-  <!-- Lista dos 20 capítulos -->
+  <h2>📘 Capítulos Gratuitos</h2>
   <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-1/" target="_blank" rel="noopener noreferrer">Capítulo 1</a>
   <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-2/" target="_blank" rel="noopener noreferrer">Capítulo 2</a>
   <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-3/" target="_blank" rel="noopener noreferrer">Capítulo 3</a>
@@ -208,4 +189,27 @@
     if (!isPlaying) {
       audio.play();
       btnAudio.textContent = 'Parar Trilha Sonora ⏸️';
-      isPlaying
+      isPlaying = true;
+    } else {
+      audio.pause();
+      btnAudio.textContent = 'Ativar Trilha Sonora 🎧';
+      isPlaying = false;
+    }
+  });
+
+  // Fade-in com IntersectionObserver
+  const fadeIns = document.querySelectorAll('.fade-in');
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('appear');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fadeIns.forEach(el => appearOnScroll.observe(el));
+</script>
+
+</body>
+</html>
