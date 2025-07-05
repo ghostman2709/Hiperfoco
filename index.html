@@ -95,30 +95,37 @@
       font-weight: 700;
     }
 
-    .link {
+    select#capituloSelect {
       display: block;
       background: rgba(102, 204, 255, 0.1);
       color: #66ccff;
       padding: 14px 20px;
-      margin: 12px auto;
-      text-decoration: none;
+      margin: 0 auto 1rem;
       border: 2px solid #66ccff;
       border-radius: 12px;
       transition: all 0.3s ease;
       font-weight: 700;
       font-size: 18px;
-      max-width: 300px;
+      max-width: 320px;
       backdrop-filter: blur(5px);
       cursor: pointer;
       box-shadow: 0 0 10px #66ccff;
       text-align: center;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2366ccff'%3e%3cpath d='M4 6l4 4 4-4z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px 12px;
     }
 
-    .link:hover {
-      background: #66ccff;
-      color: #001122;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #66ccffcc;
+    iframe#leitorCapitulo {
+      border: 2px solid #66ccff;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #66ccffcc;
+      width: 100%;
+      height: 800px;
     }
 
     footer {
@@ -147,10 +154,13 @@
       .section h2 {
         font-size: 1.4rem;
       }
-      .link, #audioControl {
+      #audioControl, select#capituloSelect {
         font-size: 1rem;
         padding: 0.8rem 1.2rem;
         max-width: 100%;
+      }
+      iframe#leitorCapitulo {
+        height: 600px;
       }
     }
   </style>
@@ -172,27 +182,31 @@
 <div class="section fade-in">
   <h2>📘 Capítulos Completos (1 a 20)</h2>
 
-  <!-- Lista dos 20 capítulos -->
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-1/">Capítulo 1</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-2/">Capítulo 2</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-3/">Capítulo 3</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-4/">Capítulo 4</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-5/">Capítulo 5</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-6/">Capítulo 6</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-7/">Capítulo 7</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-8/">Capítulo 8</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-9/">Capítulo 9</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-10/">Capítulo 10</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-11/">Capítulo 11</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-12/">Capítulo 12</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-13/">Capítulo 13</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-14/">Capítulo 14</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-15/">Capítulo 15</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-16/">Capítulo 16</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-17/">Capítulo 17</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-18/">Capítulo 18</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-19/">Capítulo 19</a>
-  <a class="link fade-in" href="https://ghostman2709.github.io/Capitulo-20/">Capítulo 20</a>
+  <select id="capituloSelect" class="fade-in" aria-label="Selecione capítulo para leitura">
+    <option value="">Selecione um capítulo</option>
+    <option value="https://ghostman2709.github.io/Capitulo-1/">Capítulo 1</option>
+    <option value="https://ghostman2709.github.io/Capitulo-2/">Capítulo 2</option>
+    <option value="https://ghostman2709.github.io/Capitulo-3/">Capítulo 3</option>
+    <option value="https://ghostman2709.github.io/Capitulo-4/">Capítulo 4</option>
+    <option value="https://ghostman2709.github.io/Capitulo-5/">Capítulo 5</option>
+    <option value="https://ghostman2709.github.io/Capitulo-6/">Capítulo 6</option>
+    <option value="https://ghostman2709.github.io/Capitulo-7/">Capítulo 7</option>
+    <option value="https://ghostman2709.github.io/Capitulo-8/">Capítulo 8</option>
+    <option value="https://ghostman2709.github.io/Capitulo-9/">Capítulo 9</option>
+    <option value="https://ghostman2709.github.io/Capitulo-10/">Capítulo 10</option>
+    <option value="https://ghostman2709.github.io/Capitulo-11/">Capítulo 11</option>
+    <option value="https://ghostman2709.github.io/Capitulo-12/">Capítulo 12</option>
+    <option value="https://ghostman2709.github.io/Capitulo-13/">Capítulo 13</option>
+    <option value="https://ghostman2709.github.io/Capitulo-14/">Capítulo 14</option>
+    <option value="https://ghostman2709.github.io/Capitulo-15/">Capítulo 15</option>
+    <option value="https://ghostman2709.github.io/Capitulo-16/">Capítulo 16</option>
+    <option value="https://ghostman2709.github.io/Capitulo-17/">Capítulo 17</option>
+    <option value="https://ghostman2709.github.io/Capitulo-18/">Capítulo 18</option>
+    <option value="https://ghostman2709.github.io/Capitulo-19/">Capítulo 19</option>
+    <option value="https://ghostman2709.github.io/Capitulo-20/">Capítulo 20</option>
+  </select>
+
+  <iframe id="leitorCapitulo" src="" title="Leitor de capítulos"></iframe>
 </div>
 
 <footer class="fade-in">
@@ -207,15 +221,35 @@
   btnAudio.addEventListener('click', () => {
     if (!isPlaying) {
       audio.play();
-      btnAudio.textContent = 'Parar Trilha Sonora ⏸️';
+      btnAudio.innerHTML = 'Parar Trilha Sonora ⏸️ 🔊';
       isPlaying = true;
     } else {
       audio.pause();
-      btnAudio.textContent = 'Ativar Trilha Sonora 🎧';
+      btnAudio.innerHTML = 'Ativar Trilha Sonora 🎧';
       isPlaying = false;
     }
   });
 
+  // Tenta tocar o áudio no carregamento (pode ser bloqueado)
+  window.addEventListener('load', () => {
+    audio.volume = 0.4;
+    audio.play().then(() => {
+      btnAudio.innerHTML = 'Parar Trilha Sonora ⏸️ 🔊';
+      isPlaying = true;
+    }).catch(() => {
+      // Autoplay bloqueado, aguardando interação do usuário
+    });
+  });
+
+  // Carregar capítulo no iframe
+  const capituloSelect = document.getElementById('capituloSelect');
+  capituloSelect.addEventListener('change', (e) => {
+    const url = e.target.value;
+    const iframe = document.getElementById('leitorCapitulo');
+    iframe.src = url;
+  });
+
+  // Animação fade-in ao scroll
   const fadeIns = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
